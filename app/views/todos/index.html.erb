@@ -5,19 +5,24 @@
 <table class="table table-stripped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
+      <th colspan="8"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <ul class= "list-group fs-5">
     <% @todos.each do |todo| %>
-      <tr>
-        <td><%= link_to todo.title, todo_path(todo.id), class: "btn btn-light" %></td>
-        <td><%=  %></td>
-        <td><%= link_to 'Modifier', edit_todo_path(todo), class: "btn btn-secondary" %></td>
-        <td><%= link_to 'Supprimer', todo, method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer cette tâche ?' }, class: "btn btn-danger" %></td>
-      </tr>
+    <li class= "d-flex justify-content-between list-group-item align-items-center">
+
+    <div>
+       <input class="form-check-input mt-0 fs-4 me-3" type="checkbox" value="">
+        <%= link_to todo.title, todo_path(todo.id) %>
+    </div>
+
+    <div>
+        <%= link_to 'Modifier', edit_todo_path(todo), class: "btn btn-secondary" %>
+        <%= link_to 'Supprimer', todo, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Etes-vous sûr de vouloir supprimer cette tâche ?' } %>
+    </div>
+</li>
     <% end %>
   </tbody>
 </table>
@@ -25,7 +30,7 @@
 <br>
 
 <div class="container text-center">
-<%= link_to 'Nouvelle tâche', new_todo_path, class: "btn btn-success" %>
+<%= link_to 'Nouvelle tâche +', new_todo_path, class: "btn btn-success" %>
 </div>
 
 
